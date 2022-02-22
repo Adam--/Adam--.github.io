@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Windows Terminal setup"
-date:   2021-05-25 08:44:52 -0400
+date:   2021-07-21 08:44:52 -0400
 categories: windows
 ---
 
