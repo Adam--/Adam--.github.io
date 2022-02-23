@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Running unit test automatically before pushing"
+title:  "Running unit tests automatically before pushing"
 date:   2021-06-15 16:02:32 -0400
 categories: git
 ---
