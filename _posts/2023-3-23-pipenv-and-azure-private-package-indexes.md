@@ -46,7 +46,7 @@ pip uinstall hil-test-rig
 
 ## Configure PyCharm
 
-When opening a project for the first time with a Pipfile, PyCharm will automatically configure a virtual environment using pipenv. If this doesn't happen, it's possible that the project has been previously configured for a different interpreter. The easiest way to fix this is to close the project, delete the .idea folder, and reopen the project. Full instructions for configuring a pipenv environment can be found at [Configure a Pipenv environment | PyCharm Documentation](https://www.jetbrains.com/help/pycharm/pipenv.html)
+When opening a project for the first time with a Pipfile, PyCharm will automatically configure a virtual environment using pipenv. If this doesn't happen, it's possible that the project has been previously configured for a different interpreter. The easiest way to fix this is to close the project, delete the .idea folder, and reopen the project. Full instructions for configuring a pipenv environment can be found at [Configure a Pipenv environment - PyCharm Documentation](https://www.jetbrains.com/help/pycharm/pipenv.html)
 
 ## Configure Visual Studio Code
 
