@@ -1,0 +1,519 @@
+/* ==========================================================================
+   1. TOKENS
+   Palette and dark mappings carried over from the color-scheme draft.
+   ========================================================================== */
+:root {
+  /* Brand colours */
+  --palladian: #EEE9DF;
+  --oatmeal: #C9C1B1;
+  --blue-fantastic: #2C3B4D;
+  --burning-flame: #FFB162;
+  --truffle: #A35139;
+  --abyssal: #1B2632;
+
+  /* Semantic — dark is the base; [data-theme="light"] below remaps it.
+     An inline script in head.html stamps data-theme on <html> before paint,
+     from localStorage or the OS preference. */
+  --bg: var(--abyssal);
+  /* Opaque on purpose: the dot field must not read through the card. */
+  --surface: #212E3C;
+  --text: var(--palladian);
+  --text-muted: var(--oatmeal);
+  --border: rgba(201, 193, 177, 0.16);
+  --border-strong: rgba(201, 193, 177, 0.28);
+  --accent: var(--burning-flame);
+  --accent-soft: rgba(255, 177, 98, 0.35);
+  --gradient-brand: linear-gradient(135deg, var(--burning-flame), var(--truffle));
+  --code-bg: var(--blue-fantastic);
+  /* Bare channel values so the veil can build rgba() at several opacities. */
+  --veil-rgb: 27, 38, 50;
+  --dots-url: url("../img/bg-dots-dark.svg");
+  --dot-color: rgba(238, 233, 223, 0.3);
+
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --measure: 68ch;
+  --radius: 1.25rem;
+
+  /* The card tracks the viewport (86vw) up to a 38rem / 608px ceiling, which it
+     reaches at ~707px wide. Below that it shrinks continuously — there is no
+     width at which it sits at a fixed size with dead space around it. For
+     reference, the carrd original caps at 660px / ~41rem. */
+  --card-max: min(38rem, 86vw);
+  /* Offset of the outer hairline frame from the card edge. */
+  --card-band: 1.25rem;
+}
+
+/* Light theme. Mappings follow the light half of the original colour-scheme
+   draft: palladian ground, abyssal text, truffle as the accent (it holds
+   contrast on a light ground where burning-flame does not). */
+:root[data-theme="light"] {
+  --bg: var(--palladian);
+  --surface: #F7F4ED;
+  --text: var(--abyssal);
+  --text-muted: var(--blue-fantastic);
+  --border: rgba(44, 59, 77, 0.18);
+  --border-strong: rgba(44, 59, 77, 0.32);
+  --accent: var(--truffle);
+  --accent-soft: rgba(163, 81, 57, 0.35);
+  /* Flame end deepened to #C2703A — the raw #FFB162 washes out on palladian. */
+  --gradient-brand: linear-gradient(135deg, #C2703A, var(--truffle));
+  --code-bg: #E7E1D4;
+  --veil-rgb: 238, 233, 223;
+  --dots-url: url("../img/bg-dots-light.svg");
+  --dot-color: rgba(27, 38, 50, 0.28);
+}
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body,
+h1, h2, h3, h4,
+p, ul, ol, figure, blockquote, pre { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Everything that is not a background layer sits above the animation. */
+.page {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.page--center {
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.25rem;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   3. ANIMATED BACKGROUND
+   Two tiled, seamlessly-repeating SVGs. The ripple/wave lives inside each SVG
+   as SMIL; the slow diagonal drift is a CSS background-position animation,
+   which stays seamless because it travels exactly one tile per cycle.
+   ========================================================================== */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+
+.bg--dots {
+  background-image: var(--dots-url);
+  background-size: 800px 800px;
+  animation: drift-dots 200s linear infinite;
+}
+
+/* Softens the field toward the edges so the card keeps its contrast. */
+.bg--veil {
+  background: radial-gradient(ellipse at center,
+    rgba(var(--veil-rgb), 0) 0%,
+    rgba(var(--veil-rgb), 0.55) 70%,
+    rgba(var(--veil-rgb), 0.85) 100%);
+}
+
+/* Long-form pages push the field further back — a dot field drifting behind
+   body copy is distracting to read over. */
+.is-prose .bg--veil {
+  background: radial-gradient(ellipse at center,
+    rgba(var(--veil-rgb), 0.62) 0%,
+    rgba(var(--veil-rgb), 0.78) 60%,
+    rgba(var(--veil-rgb), 0.92) 100%);
+}
+
+@keyframes drift-dots {
+  from { background-position: 0 0; }
+  to   { background-position: -800px 800px; }
+}
+
+/* ==========================================================================
+   4. CARD
+   ========================================================================== */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: var(--card-max);
+  padding: clamp(1.75rem, 5vw, 3.25rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* Offset hairline frame — echoes the nested frames of the reference. Filled
+   with the page background so the dot field stops at the outer hairline and the
+   band around the card stays clean.
+
+   z-index: -1 is required, not cosmetic: it drops the fill behind the card's
+   own background. Without it the pseudo-element paints after .card's in-flow
+   content and the opaque fill would cover the avatar and text. This works
+   because .card creates no stacking context (position: relative, z-index auto,
+   no backdrop-filter), so the negative layer resolves against .page — which is
+   itself a stacking context at z-index 1, keeping the fill above the page-wide
+   dot layer. */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--card-band));
+  z-index: -1;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + var(--card-band));
+  background-color: var(--bg);
+  pointer-events: none;
+}
+
+.card__avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  margin-bottom: 1.75rem;
+}
+
+/* Sits under the name as a subtitle, so it is tucked close to it — the gap to
+   the following rule is owned by .card__rule's own margin. */
+.card__tagline {
+  font-size: clamp(0.7rem, 2.4vw, 0.82rem);
+  font-weight: 400;
+  line-height: 1.75;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0;
+  color: var(--accent); /* fallback where background-clip: text is unsupported */
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .card__tagline { color: transparent; }
+}
+
+/* Upper bound is set so "Adam Anderson" still fits on one line inside the
+   capped card; the lower bound keeps it on one line down to ~320px. */
+.card__name {
+  font-size: clamp(1.5rem, 7vw, 2.5rem);
+  font-weight: 200;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.card__rule {
+  height: 1px;
+  border: 0;
+  margin: 1.75rem 0;
+  background: var(--gradient-brand);
+  opacity: 0.5;
+}
+
+.card__bio {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   5. THEME TOGGLE
+   ========================================================================== */
+.theme-toggle {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Show the icon for the theme you would switch TO. */
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* ==========================================================================
+   6. SOCIAL ICONS
+   ========================================================================== */
+.social {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.social a {
+  display: inline-flex;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.social a:hover,
+.social a:focus-visible {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   7. PROSE PAGES (posts, about, blog index, 404)
+   ========================================================================== */
+.masthead {
+  padding: 2.5rem 0 0;
+}
+
+.masthead a {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.masthead a:hover { color: var(--accent); }
+
+.content {
+  padding: 3rem 0 4rem;
+}
+
+.content__title {
+  font-size: clamp(1.6rem, 5vw, 2.25rem);
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.content__meta {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.content__rule {
+  height: 1px;
+  border: 0;
+  margin: 2rem 0;
+  background: var(--gradient-brand);
+  opacity: 0.5;
+}
+
+.prose {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text);
+  max-width: var(--measure);
+}
+
+.prose > * + * { margin-top: 1.25rem; }
+
+.prose h2,
+.prose h3 {
+  font-family: var(--mono);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-top: 2.5rem;
+  line-height: 1.3;
+}
+
+.prose h2 { font-size: 1.35rem; }
+.prose h3 { font-size: 1.1rem; }
+
+.prose a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-soft);
+  transition: border-color 0.2s ease;
+}
+
+.prose a:hover { border-bottom-color: var(--accent); }
+
+.prose ul,
+.prose ol { padding-left: 1.35rem; }
+
+.prose li + li { margin-top: 0.4rem; }
+
+.prose blockquote {
+  border-left: 2px solid var(--border-strong);
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+}
+
+.prose code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+.prose pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.prose img {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   8. POST LIST
+   ========================================================================== */
+/* Selectors are written to outrank the generic `.prose` rules, since the list
+   is rendered inside a .prose wrapper. */
+ul.postlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: var(--measure);
+}
+
+ul.postlist li + li {
+  margin-top: 0;
+  border-top: 1px solid var(--border);
+}
+
+.postlist a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1rem;
+  padding: 0.85rem 0;
+  color: var(--text);
+  border-bottom: 0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.postlist a:hover { color: var(--accent); }
+
+.postlist time {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.postlist span { font-weight: 300; }
+
+/* ==========================================================================
+   9. REDUCED MOTION
+   Drop every moving layer and substitute a static dot field so the page keeps
+   its texture without any animation.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .bg--dots {
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+}

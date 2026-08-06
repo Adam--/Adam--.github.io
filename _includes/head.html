@@ -1,0 +1,48 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1B2632" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#EEE9DF" media="(prefers-color-scheme: light)">
+
+{%- comment -%}
+  Stamp the theme before first paint so the page never flashes the wrong one.
+  Must stay inline and blocking, and must stay ahead of the stylesheet.
+{%- endcomment %}
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+
+{%- assign page_title = page.title | default: site.title -%}
+{%- if page.title and page.url != "/" -%}
+  {%- assign full_title = page.title | append: " · " | append: site.title -%}
+{%- else -%}
+  {%- assign full_title = site.title -%}
+{%- endif -%}
+{%- assign desc = page.description | default: site.description | strip_newlines | strip -%}
+
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ desc | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ full_title | escape }}">
+<meta property="og:description" content="{{ desc | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+{%- if site.avatar %}
+<meta property="og:image" content="{{ site.avatar | absolute_url }}">
+{%- endif %}
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{%- feed_meta -%}

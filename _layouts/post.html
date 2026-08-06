@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<header class="masthead">
+  <div class="wrap"><a href="{{ '/blog/' | relative_url }}">&larr; Writing</a></div>
+</header>
+
+<main class="content">
+  <div class="wrap">
+    <article>
+      <h1 class="content__title">{{ page.title }}</h1>
+      <p class="content__meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
+        {%- if page.categories.size > 0 %} &middot; {{ page.categories | join: ", " }}{% endif -%}
+      </p>
+      <hr class="content__rule">
+      <div class="prose">
+        {{ content }}
+      </div>
+    </article>
+  </div>
+</main>

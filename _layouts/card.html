@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<main class="card">
+  {%- if site.avatar %}
+  <img class="card__avatar" src="{{ site.avatar | relative_url }}" alt="{{ site.author | default: site.title }}" width="92" height="92">
+  {%- endif %}
+
+  <h1 class="card__name">{{ site.title }}</h1>
+
+  {%- if site.tagline %}
+  <p class="card__tagline">{{ site.tagline }}</p>
+  {%- endif %}
+
+  <hr class="card__rule">
+
+  {%- assign bio = content | strip -%}
+  {%- if bio != "" %}
+  <div class="card__bio">{{ bio }}</div>
+  {%- endif %}
+
+  {%- include social.html -%}
+</main>

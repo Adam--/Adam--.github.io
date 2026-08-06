@@ -1,4 +1,9 @@
-# Integrating Pipenv and Azure Private Package Indexes
+---
+layout: post
+title:  "Integrating Pipenv and Azure private package indexes"
+date:   2023-03-23 09:00:00 -0400
+categories: python
+---
 
 Pipenv is a popular tool for automatically creating and managing Python virtual environments and installing and managing pip packages.
 

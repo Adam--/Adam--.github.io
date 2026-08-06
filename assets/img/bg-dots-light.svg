@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="none">
+  <!-- Palladian #EEE9DF at low alpha. Colours are baked in: a background-image
+       cannot read CSS custom properties from the host document. -->
+  <style>circle { fill: rgba(27,38,50,0.34); }</style>
+  <defs>
+    <circle id="d0" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="0ms"/>
+    </circle>
+    <circle id="d1" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-520ms"/>
+    </circle>
+    <circle id="d2" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-1040ms"/>
+    </circle>
+    <circle id="d3" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-1560ms"/>
+    </circle>
+    <circle id="d4" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-2080ms"/>
+    </circle>
+    <circle id="d5" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-2600ms"/>
+    </circle>
+    <circle id="d6" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-3120ms"/>
+    </circle>
+    <circle id="d7" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-3640ms"/>
+    </circle>
+    <circle id="d8" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-4160ms"/>
+    </circle>
+    <circle id="d9" cx="0" cy="0" r="1.05">
+      <animateTransform attributeName="transform" type="translate" dur="5200ms" repeatCount="indefinite" calcMode="linear" values="0 0;0 3.444;0 6.364;0 8.315;0 9;0 8.315;0 6.364;0 3.444;0 0;0 -3.444;0 -6.364;0 -8.315;0 -9;0 -8.315;0 -6.364;0 -3.444;0 0" begin="-4680ms"/>
+    </circle>
+  </defs>
+  <use href="#d0" x="25" y="25"/>
+  <use href="#d1" x="75" y="25"/>
+  <use href="#d2" x="125" y="25"/>
+  <use href="#d3" x="175" y="25"/>
+  <use href="#d4" x="225" y="25"/>
+  <use href="#d5" x="275" y="25"/>
+  <use href="#d6" x="325" y="25"/>
+  <use href="#d7" x="375" y="25"/>
+  <use href="#d8" x="425" y="25"/>
+  <use href="#d9" x="475" y="25"/>
+  <use href="#d1" x="25" y="75"/>
+  <use href="#d2" x="75" y="75"/>
+  <use href="#d3" x="125" y="75"/>
+  <use href="#d4" x="175" y="75"/>
+  <use href="#d5" x="225" y="75"/>
+  <use href="#d6" x="275" y="75"/>
+  <use href="#d7" x="325" y="75"/>
+  <use href="#d8" x="375" y="75"/>
+  <use href="#d9" x="425" y="75"/>
+  <use href="#d0" x="475" y="75"/>
+  <use href="#d2" x="25" y="125"/>
+  <use href="#d3" x="75" y="125"/>
+  <use href="#d4" x="125" y="125"/>
+  <use href="#d5" x="175" y="125"/>
+  <use href="#d6" x="225" y="125"/>
+  <use href="#d7" x="275" y="125"/>
+  <use href="#d8" x="325" y="125"/>
+  <use href="#d9" x="375" y="125"/>
+  <use href="#d0" x="425" y="125"/>
+  <use href="#d1" x="475" y="125"/>
+  <use href="#d3" x="25" y="175"/>
+  <use href="#d4" x="75" y="175"/>
+  <use href="#d5" x="125" y="175"/>
+  <use href="#d6" x="175" y="175"/>
+  <use href="#d7" x="225" y="175"/>
+  <use href="#d8" x="275" y="175"/>
+  <use href="#d9" x="325" y="175"/>
+  <use href="#d0" x="375" y="175"/>
+  <use href="#d1" x="425" y="175"/>
+  <use href="#d2" x="475" y="175"/>
+  <use href="#d4" x="25" y="225"/>
+  <use href="#d5" x="75" y="225"/>
+  <use href="#d6" x="125" y="225"/>
+  <use href="#d7" x="175" y="225"/>
+  <use href="#d8" x="225" y="225"/>
+  <use href="#d9" x="275" y="225"/>
+  <use href="#d0" x="325" y="225"/>
+  <use href="#d1" x="375" y="225"/>
+  <use href="#d2" x="425" y="225"/>
+  <use href="#d3" x="475" y="225"/>
+  <use href="#d5" x="25" y="275"/>
+  <use href="#d6" x="75" y="275"/>
+  <use href="#d7" x="125" y="275"/>
+  <use href="#d8" x="175" y="275"/>
+  <use href="#d9" x="225" y="275"/>
+  <use href="#d0" x="275" y="275"/>
+  <use href="#d1" x="325" y="275"/>
+  <use href="#d2" x="375" y="275"/>
+  <use href="#d3" x="425" y="275"/>
+  <use href="#d4" x="475" y="275"/>
+  <use href="#d6" x="25" y="325"/>
+  <use href="#d7" x="75" y="325"/>
+  <use href="#d8" x="125" y="325"/>
+  <use href="#d9" x="175" y="325"/>
+  <use href="#d0" x="225" y="325"/>
+  <use href="#d1" x="275" y="325"/>
+  <use href="#d2" x="325" y="325"/>
+  <use href="#d3" x="375" y="325"/>
+  <use href="#d4" x="425" y="325"/>
+  <use href="#d5" x="475" y="325"/>
+  <use href="#d7" x="25" y="375"/>
+  <use href="#d8" x="75" y="375"/>
+  <use href="#d9" x="125" y="375"/>
+  <use href="#d0" x="175" y="375"/>
+  <use href="#d1" x="225" y="375"/>
+  <use href="#d2" x="275" y="375"/>
+  <use href="#d3" x="325" y="375"/>
+  <use href="#d4" x="375" y="375"/>
+  <use href="#d5" x="425" y="375"/>
+  <use href="#d6" x="475" y="375"/>
+  <use href="#d8" x="25" y="425"/>
+  <use href="#d9" x="75" y="425"/>
+  <use href="#d0" x="125" y="425"/>
+  <use href="#d1" x="175" y="425"/>
+  <use href="#d2" x="225" y="425"/>
+  <use href="#d3" x="275" y="425"/>
+  <use href="#d4" x="325" y="425"/>
+  <use href="#d5" x="375" y="425"/>
+  <use href="#d6" x="425" y="425"/>
+  <use href="#d7" x="475" y="425"/>
+  <use href="#d9" x="25" y="475"/>
+  <use href="#d0" x="75" y="475"/>
+  <use href="#d1" x="125" y="475"/>
+  <use href="#d2" x="175" y="475"/>
+  <use href="#d3" x="225" y="475"/>
+  <use href="#d4" x="275" y="475"/>
+  <use href="#d5" x="325" y="475"/>
+  <use href="#d6" x="375" y="475"/>
+  <use href="#d7" x="425" y="475"/>
+  <use href="#d8" x="475" y="475"/>
+</svg>

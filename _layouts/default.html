@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  {%- include head.html -%}
+</head>
+<body class="{% if page.layout == 'card' %}is-card{% else %}is-prose{% endif %}">
+  {%- include background.html -%}
+  {%- include theme-toggle.html -%}
+
+  <div class="page {% if page.layout == 'card' %}page--center{% endif %}">
+    {{ content }}
+  </div>
+</body>
+</html>

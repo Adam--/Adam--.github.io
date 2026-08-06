@@ -1,0 +1,37 @@
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="4.5"></circle>
+    <line x1="12" y1="1.5" x2="12" y2="4"></line>
+    <line x1="12" y1="20" x2="12" y2="22.5"></line>
+    <line x1="4.22" y1="4.22" x2="6" y2="6"></line>
+    <line x1="18" y1="18" x2="19.78" y2="19.78"></line>
+    <line x1="1.5" y1="12" x2="4" y2="12"></line>
+    <line x1="20" y1="12" x2="22.5" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="6" y2="18"></line>
+    <line x1="18" y1="6" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+  </svg>
+</button>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+
+    function label() {
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+    }
+
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      label();
+    });
+
+    label();
+  })();
+</script>

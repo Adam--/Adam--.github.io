@@ -1,0 +1,11 @@
+{%- comment -%}
+  Two stacked, non-interactive layers behind everything else: the rippling dot
+  field and a veil that fades it toward the edges. The ripple is SMIL inside the
+  SVG; the slow diagonal drift is a CSS background-position animation. Both are
+  disabled under prefers-reduced-motion (see main.css).
+
+  The wavy grid is deliberately not a page-wide layer — it is scoped to the
+  card's frame band in main.css (.card::before).
+{%- endcomment -%}
+<div class="bg bg--dots" aria-hidden="true"></div>
+<div class="bg bg--veil" aria-hidden="true"></div>
