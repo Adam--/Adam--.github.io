@@ -10,6 +10,7 @@ url: "https://www.adamanderson.dev" # the base hostname & protocol for your site
 # Card
 # Square headshot shown on the card, also used as the og:image.
 avatar: /assets/img/avatar.jpg
+avatar_light: /assets/img/avatar-light.jpg
 
 # Social
 github_username: adam--
