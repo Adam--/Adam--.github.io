@@ -210,6 +210,10 @@ img { max-width: 100%; display: block; }
   margin-bottom: 1.75rem;
 }
 
+.card__avatar--light { display: none; }
+:root[data-theme="light"] .card__avatar:not(.card__avatar--light) { display: none; }
+:root[data-theme="light"] .card__avatar--light { display: block; }
+
 /* Sits under the name as a subtitle, so it is tucked close to it — the gap to
    the following rule is owned by .card__rule's own margin. */
 .card__tagline {

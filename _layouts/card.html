@@ -5,6 +5,9 @@ layout: default
   {%- if site.avatar %}
   <img class="card__avatar" src="{{ site.avatar | relative_url }}" alt="{{ site.author | default: site.title }}" width="92" height="92">
   {%- endif %}
+  {%- if site.avatar_light %}
+  <img class="card__avatar card__avatar--light" src="{{ site.avatar_light | relative_url }}" alt="{{ site.author | default: site.title }}" width="92" height="92">
+  {%- endif %}
 
   <h1 class="card__name">{{ site.title }}</h1>
 
